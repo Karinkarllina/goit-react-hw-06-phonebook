@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import { createContact } from 'redux/createSlice';
 import { nanoid } from 'nanoid';
 import css from './ContactForm.module.css';
@@ -7,16 +7,30 @@ export function ContactForm() {
     
     const dispatch = useDispatch();
     
+    const contacts = useSelector(state => state.contacts.contacts); 
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const formValue = event.currentTarget;
-    dispatch(
-        createContact({
-        id: nanoid(),
-        name: formValue.elements.name.value,
-        number: formValue.elements.number.value,
-      })
-    );
+
+        const newContact = {
+            id: nanoid(),
+            name: formValue.elements.name.value,
+            number: formValue.elements.number.value,  
+        }
+
+        const filterName = contacts.filter(contact => contact.name.toLowerCase() === newContact.name.toLowerCase()).length;
+
+        if (filterName) {
+            return alert(`${newContact.name} is already in contacts`)
+        }
+        
+        dispatch(
+            createContact(
+                newContact
+            )
+        );
+
     formValue.reset();
     };
   

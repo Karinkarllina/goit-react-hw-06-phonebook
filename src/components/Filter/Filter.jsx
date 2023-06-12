@@ -8,9 +8,7 @@ export const Filter = () => {
 
   const dispatch = useDispatch();
 
-  const filterChange = event => {
-    dispatch(filterContact(event.currentTarget.value));
-  };
+  const filterChange = event => { dispatch(filterContact(event.currentTarget.value));};
 
     return (
 

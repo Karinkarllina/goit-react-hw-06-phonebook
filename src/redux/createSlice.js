@@ -1,14 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
+import contactsData from '../components/data/initialContacts.json'
+
 
 export const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
-    contacts: [],
+    contacts: contactsData,
     filter: '',
+    
   },
+ 
 
   reducers: {
-    
+
     createContact(state, action) {
       state.contacts.push(action.payload);
       localStorage.setItem('contacts', JSON.stringify(state.contacts));

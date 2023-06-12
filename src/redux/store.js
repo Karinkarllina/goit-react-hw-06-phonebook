@@ -3,7 +3,8 @@ import { contactsSlice } from './createSlice';
 
 export const store = configureStore({
 
-    reducer: { contacts: contactsSlice.reducer }
-
+    reducer: {
+        contacts: contactsSlice.reducer
+    }
 
 })

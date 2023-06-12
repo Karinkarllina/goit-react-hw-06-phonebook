@@ -14,9 +14,7 @@ export const ContactList = () => {
 
   const dispatch = useDispatch();
 
-  const filterContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filterValue.toLowerCase())
-  );
+  const filterContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filterValue.toLowerCase()));
 
 
 
